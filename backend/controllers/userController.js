@@ -212,7 +212,13 @@ export const verifyOTP = async(req, res) => {
   if(!otp){
     return res.status(400).json({
       success:false,
-      message: "OTP is requried"
+      message: "OTP is required"
+    })
+  }
+  if(!email){
+    return res.status(400).json({
+      success:false,
+      message:"Email is required"
     })
   }
 
@@ -232,11 +238,12 @@ export const verifyOTP = async(req, res) => {
     }
     if (user.otpExpiry < new Date()){
       return res.status(400).json({
-        success:"OTP has expired. Please request a new one"
+        success: false,
+  message: "OTP has expired. Please request a new one"
       })
     }
     if(otp !== user.otp){
-      res.status(400).json({
+     return res.status(400).json({
         success:false,
         message:"Invalid OTP"
       })
