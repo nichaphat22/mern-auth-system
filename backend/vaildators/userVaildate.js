@@ -18,6 +18,9 @@ export const validateUser = (schema) => async (req, res, next) => {
     await schema.validate(req.body);
     next();
   } catch (error) {
-    return res.status(400).json({ error: error.errors });
+    return res.status(400).json({ 
+      success: false,
+      errors: error.errors
+    });
   }
 };
