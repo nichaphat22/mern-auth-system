@@ -15,7 +15,7 @@ export const verifyMail = async(token, email) => {
   )
 
   const template = Handlebars.compile(emailTemplateSource)
-    const verifyLink = `http://localhost:5000/api/verify/${encodeURIComponent(token)}`
+    const verifyLink = `http://localhost:5173/verify/${encodeURIComponent(token)}`
   const htmlToSend = template({verifyLink})
 
   const transporter = nodemailer.createTransport({
