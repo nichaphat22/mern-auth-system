@@ -52,6 +52,7 @@ const Login = () => {
       if (res.data.success) {
         navigate("/");
         setUser(res.data.user)
+        localStorage.setItem("accessToken", res.data.accessToken)
         toast.success(res.data.message);
       }
     } catch (error) {
